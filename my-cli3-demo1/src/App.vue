@@ -9,6 +9,14 @@
 </template>
 
 <style lang="scss">
+*{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

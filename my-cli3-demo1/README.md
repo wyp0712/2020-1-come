@@ -1,24 +1,23 @@
 # my-cli3-demo1
 
-## Project setup
-```
-npm install
-```
+微信读书app
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+弹框组件
 
-### Compiles and minifies for production
-```
-npm run build
-```
+搜索组件
 
-### Lints and fixes files
-```
-npm run lint
-```
+卡片组件
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+banner组件
+
+热门组件
+
+404组件
+
+
+pages: 
+
+  首页
+  分类页面
+  书架
+  详情页面
