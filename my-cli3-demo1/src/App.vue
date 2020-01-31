@@ -9,6 +9,7 @@
 </template>
 
 <style lang="scss">
+@import url('./assets/iconfont/iconfont.css');
 *{
   list-style: none;
   margin: 0;

@@ -1,12 +1,10 @@
 <template>
   <div class="image-wrapper" @click="onClick">
-    
-    <img 
+    <img
       :class="round ? 'image round': 'image' " 
-      :src="src" 
+      :src="src"
       :style="{ height }"
     >
-
   </div>
 </template>
 <script>
