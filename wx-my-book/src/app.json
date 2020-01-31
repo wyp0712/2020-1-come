@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/cart/main",
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "微信读书",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "text": "首页",
+        "title": "首页",
+        "iconPath": "icon-img/home.png",
+        "selectedIconPath": "icon-img/home_1.png"
+      },
+      {
+        "pagePath": "pages/logs/main",
+        "text": "消息",
+        "iconPath": "icon-img/home.png",
+        "selectedIconPath": "icon-img/home_1.png"
+      },
+      {
+        "pagePath": "pages/cart/main",
+        "text": "购物车"
+      }
+    ]
+  }
+}
