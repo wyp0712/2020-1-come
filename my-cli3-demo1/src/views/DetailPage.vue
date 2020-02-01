@@ -56,17 +56,16 @@ export default {
       if (this.isInShelf) { // true  
         this.isInShelf = false
         this.removeBookRack(bookItem)
-        console.log(this.isInShelf, '移除书架')
       } else {
         // 加入书架
         this.addBookRack(bookItem)
         this.getIsInShelf()
-        console.log(this.isInShelf, '加入书架')
       }
     },
     onClickRight() {
 
     },
+    // 加入书架的比较函数
     getIsInShelf() {
       this.bookRackList.forEach(item => {
         if (this.$route.query.item) {
