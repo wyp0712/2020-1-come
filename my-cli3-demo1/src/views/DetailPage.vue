@@ -14,9 +14,6 @@
       @onClickRight="onClickRight"
       :isInShelf="isInShelf"
      />
-     <div class="ddd">
-     </div>
-
   </div>
 </template>
 
@@ -50,8 +47,6 @@ export default {
     ]),
     onClickLeft() {
       const bookItem = JSON.parse(this.$route.query.item) || ''
-      console.log(bookItem) 
-      console.log(this.isInShelf, 'this.isInShelf')
       // 如何为true就说明要移除书架
       if (this.isInShelf) { // true  
         this.isInShelf = false

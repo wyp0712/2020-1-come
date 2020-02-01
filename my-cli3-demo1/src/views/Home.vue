@@ -40,7 +40,6 @@ export default {
   mounted() {
     const { shelf } = this.BookData.data
     this.shelfList = shelf;
-    console.log(this.BookData.data.shelf, 'BookData') 
   },
   components: {
     ImageView,
