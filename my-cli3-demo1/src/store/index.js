@@ -15,12 +15,20 @@ export default new Vuex.Store({
         Vue.set(item, 'isInShelf', true)
         state.bookRackList.push(item) 
       }
+    },
+    [types.READ_REMOVE_BOOKRACK](state, item) {
+      state.bookRackList = state.bookRackList.filter(val => {
+        return val.id !== item.id
+      })
     }
   },
   actions: {
     addBookRack({ commit }, item) {
       commit(types.READ_ADD_BOOKRACK, item)
-    } 
+    },
+    removeBookRack({ commit }, item) {
+      commit(types.READ_REMOVE_BOOKRACK, item)
+    }
   },
   modules: {
   }

@@ -6,30 +6,14 @@
      />
 
      <div class="rack-box">
-<ul>
-      <li> 
-        <ImageView 
-         src="https://www.youbaobao.xyz/book/res/img/MaterialsScience/978-981-10-7617-6_CoverFigure.jpg"
-         height='128px'
-        />
-      </li>
-     </ul>
-      <ul>
-      <li>  
-        <ImageView 
-         src="https://www.youbaobao.xyz/book/res/img/MaterialsScience/978-981-10-7617-6_CoverFigure.jpg"
-         height='128px'
-        />
-      </li>
-     </ul>
-      <ul>
-      <li>  
-        <ImageView 
-         src="https://www.youbaobao.xyz/book/res/img/MaterialsScience/978-981-10-7617-6_CoverFigure.jpg"
-         height='128px'
-        />
-      </li>
-     </ul>
+        <ul v-for="(item, index) in bookRackList" :key="index">
+          <li> 
+            <ImageView 
+            :src="item.cover"
+            height='128px'
+            />
+          </li>
+        </ul> 
      </div>
      
    </div>
@@ -38,12 +22,18 @@
 <script>
 import ImageView from '@/components/ImageView'
 import HeaderBar from '@/components/Header'
+import { mapState } from 'vuex'
 export default {
   name: 'book-rack',
   data() {
     return {
       isHome: false
     }
+  },
+  computed: {
+    ...mapState([
+      'bookRackList'
+    ]),
   },
   components: {
     ImageView,

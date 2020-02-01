@@ -4,8 +4,12 @@
       :isHome="isHome"
       title="详情页"
      />
-     <DetailBook />
-     <DetailButton 
+
+     <DetailBook 
+      :book="bookItem"
+     />
+
+     <DetailButton
       @onClickLeft="onClickLeft"
       @onClickRight="onClickRight"
       :isInShelf="isInShelf"
@@ -25,7 +29,8 @@ export default {
   data() {
     return {
       isHome: false,
-      isInShelf: false
+      isInShelf: false,
+      bookItem: {}
     }
   },
   components: {
@@ -40,28 +45,40 @@ export default {
   },
   methods: {
     ...mapActions([
-      'addBookRack'
+      'addBookRack',
+      'removeBookRack'
     ]),
     onClickLeft() {
-      const bookItem = JSON.parse(this.$route.query.item)
-      this.addBookRack(bookItem)
-      this.getIsInShelf()
+      const bookItem = JSON.parse(this.$route.query.item) || ''
+      console.log(bookItem) 
+      console.log(this.isInShelf, 'this.isInShelf')
+      // 如何为true就说明要移除书架
+      if (this.isInShelf) { // true  
+        this.isInShelf = false
+        this.removeBookRack(bookItem)
+        console.log(this.isInShelf, '移除书架')
+      } else {
+        // 加入书架
+        this.addBookRack(bookItem)
+        this.getIsInShelf()
+        console.log(this.isInShelf, '加入书架')
+      }
     },
     onClickRight() {
 
     },
     getIsInShelf() {
       this.bookRackList.forEach(item => {
-        if (item.id === JSON.parse(this.$route.query.item).id) {
-          console.log(1, 's')
-          console.log(item, 'item')
-          this.isInShelf = item.isInShelf
-          console.log(this.isInShelf, 'isInShelf')
+        if (this.$route.query.item) {
+          if (item.id === JSON.parse(this.$route.query.item).id) {
+            this.isInShelf = item.isInShelf
+          }
         }
       })
     }
   },
   mounted() {
+    this.bookItem = JSON.parse(this.$route.query.item) || {}
     this.getIsInShelf()
   }
 }

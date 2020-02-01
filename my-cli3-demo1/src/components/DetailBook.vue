@@ -2,16 +2,13 @@
   <div class="detail-book-wrapper">
      <div class="detail-left">
        <ImageView
-        src="https://www.youbaobao.xyz/book/res/img/BusinessandManagement/978-3-319-91971-3_CoverFigure.jpg"
+        :src="book.cover"
        />
      </div>
      <div class="detail-right">
-       <div class="title">防疫在家不出门</div>
-       <div class="author">吃好喝好</div>
-       <div class="category">养生</div>
-     </div>
-     <div> 
-       <van-rate v-model="value" />
+       <div class="title">{{book.title}}</div>
+       <div class="author">{{book.author}}</div>
+       <div class="category">{{book.categoryText}}</div>
      </div>
   </div>
 </template>
@@ -26,6 +23,9 @@ export default {
     return {
       value: 2
     }
+  },
+  mounted() {
+    console.log(this.book, 'book')
   },
   components: {
     ImageView
