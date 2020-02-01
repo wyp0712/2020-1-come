@@ -15,8 +15,9 @@
     <div class="bottom">
        <ul v-for="(item, index) in shelfList" :key="index">
          <li class="img-box">
-           <ImageView 
+           <ImageView
             :src="item.cover"
+            @onClick="onDetailClick(item)"
            />
          </li>
        </ul>
@@ -46,6 +47,10 @@ export default {
   methods: {
     gotoShelf() {
       this.$emit('onClick')
+    },
+    onDetailClick(item) {
+      console.log(item, 'item')
+      this.$router.push(`/detail/${item.id}`)
     }
   },
   

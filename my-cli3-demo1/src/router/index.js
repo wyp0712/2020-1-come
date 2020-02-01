@@ -11,14 +11,19 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/search',
+    name: 'search',
+    component: () => import(/* webpackChunkName: "about" */ '../views/SearachPage.vue')
   },
   {
     path: '/bookRack',
     name: 'bookRack',
     component: () => import(/* webpackChunkName: "bookRack" */ '../views/BookRack.vue')
+  },
+  {
+    path: '/detail/:id',
+    name: 'detail',
+    component: () => import(/* webpackChunkName: "detailbook" */ '../views/DetailPage.vue')
   }
 ]
 

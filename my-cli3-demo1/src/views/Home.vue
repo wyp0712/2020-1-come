@@ -6,16 +6,7 @@
       :disabled="disabled"
       @onSearchClick="onSearchClick"
     />
-<!-- 
-    <div class="img-wrapper">
-      <ImageView 
-        src="https://www.youbaobao.xyz/mpvue-res/big.jpg"
-        :round="round"
-        @onClick="onImgClick"
-        height="200px"
-      />
-    </div> -->
-    <HomeCard 
+    <HomeCard
      :shelfList="shelfList"
      @onClick="onHomeCardClick"
     />
@@ -71,8 +62,7 @@ export default {
       console.log('hello world')
     },
     onSearchClick() {
-      console.log('点击跳转路由')
-      this.$router.push('/about')
+      this.$router.push('/search')
     }
   }
 

@@ -1,10 +1,13 @@
 <template>
    <div class="book-rack-wrapper">
-     <HeaderBar />
+     <HeaderBar 
+      :isHome="isHome"
+      title="书架"
+     />
 
      <div class="rack-box">
 <ul>
-      <li>  
+      <li> 
         <ImageView 
          src="https://www.youbaobao.xyz/book/res/img/MaterialsScience/978-981-10-7617-6_CoverFigure.jpg"
          height='128px'
@@ -37,6 +40,11 @@ import ImageView from '@/components/ImageView'
 import HeaderBar from '@/components/Header'
 export default {
   name: 'book-rack',
+  data() {
+    return {
+      isHome: false
+    }
+  },
   components: {
     ImageView,
     HeaderBar
