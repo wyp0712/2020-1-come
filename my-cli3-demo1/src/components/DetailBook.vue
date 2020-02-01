@@ -1,7 +1,7 @@
 <template>
   <div class="detail-book-wrapper">
      <div class="detail-left">
-       <ImageView 
+       <ImageView
         src="https://www.youbaobao.xyz/book/res/img/BusinessandManagement/978-3-319-91971-3_CoverFigure.jpg"
        />
      </div>
@@ -18,6 +18,9 @@
 <script>
 import ImageView from './ImageView'
 export default {
+  props: {
+    book: Object
+  },
   name: 'detail-book',
   data() {
     return {

@@ -1,0 +1,1 @@
+export const READ_ADD_BOOKRACK = 'read_add_bookrack'

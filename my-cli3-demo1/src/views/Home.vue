@@ -51,15 +51,12 @@ export default {
   },
   methods: {
     onHomeCardClick() {
-      console.log('hhjdhdj')
       this.$router.push('/bookRack')
     },
     onDialogClick() {
-      console.log('eeee')
       this.isShowDialog = false
     },
     onImgClick() {
-      console.log('hello world')
     },
     onSearchClick() {
       this.$router.push('/search')

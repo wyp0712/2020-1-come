@@ -5,8 +5,10 @@
       title="详情页"
      />
      <DetailBook />
-
-     <DetailButton />
+     <DetailButton 
+      @onClickLeft="onClickLeft"
+      @onClickRight="onClickRight"
+     />
   </div>
 </template>
 
@@ -14,6 +16,7 @@
 import HeaderBar from '@/components/Header'
 import DetailBook from '@/components/DetailBook'
 import DetailButton from '@/components/DetailButton'
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -24,6 +27,20 @@ export default {
     HeaderBar,
     DetailBook,
     DetailButton
+  },
+  methods: {
+    ...mapActions([
+      'addBookRack'
+    ]),
+    onClickLeft() {
+      const bookItem = JSON.parse(this.$route.query.item)
+      this.addBookRack(bookItem)
+    },
+    onClickRight() {
+
+    }
+  },
+  mounted() {
   }
 }
 </script>

@@ -49,8 +49,12 @@ export default {
       this.$emit('onClick')
     },
     onDetailClick(item) {
-      console.log(item, 'item')
-      this.$router.push(`/detail/${item.id}`)
+      this.$router.push({
+        path: `/detail/${item.id}`,
+        query: {
+          item: JSON.stringify(item)
+        }
+      })
     }
   },
   

@@ -4,9 +4,11 @@
      :style="{ 
        width, 
        height, 
-       'borderRadius': round }"
+       'borderRadius': round,
+       'lineHeight':  height
+        }"
      :type="btnType"
-     @click="onClick" 
+     @click="onClick"
      >{{btnMsg}}</van-button>
   </div>
 </template>
