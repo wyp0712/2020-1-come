@@ -6,6 +6,7 @@
        height="40px"
        @onClick="onClickLeft"
        :btnMsg="isInShelf ? '移出书架' : '加入书架' "
+       :isBook="isInShelf"
       />
     </div>
     <div class="btn">

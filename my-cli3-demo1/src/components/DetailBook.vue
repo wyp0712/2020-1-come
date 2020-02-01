@@ -40,15 +40,15 @@ export default {
     }
     .detail-right {
       flex:6;
-       .title {
+      //  .title {
 
-       }
-       .author {
+      //  }
+      //  .author {
 
-       }
-       .category {
+      //  }
+      //  .category {
 
-       }
+      //  }
     }
   }
 </style>

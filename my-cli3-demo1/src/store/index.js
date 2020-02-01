@@ -12,9 +12,9 @@ export default new Vuex.Store({
     [types.READ_ADD_BOOKRACK](state, item) {
       let book =  state.bookRackList.find(val => val.id === item.id)
       if (!book) {
+        Vue.set(item, 'isInShelf', true)
         state.bookRackList.push(item) 
       }
-      console.log(state.bookRackList, 'state.bookRackList')
     }
   },
   actions: {

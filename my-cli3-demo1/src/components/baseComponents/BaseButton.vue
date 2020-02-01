@@ -5,8 +5,9 @@
        width, 
        height, 
        'borderRadius': round,
-       'lineHeight':  height
+       'lineHeight':  height,       
         }"
+     :class="isBook ? 'active': '' "  
      :type="btnType"
      @click="onClick"
      >{{btnMsg}}</van-button>
@@ -34,6 +35,10 @@ export default {
     btnMsg: {
       type: String,
       default: '加入书架'
+    },
+    isBook: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -50,5 +55,9 @@ export default {
 }
 </script>
 <style lang="scss">
-  
+  .active {
+    background: #FFE6E0;
+    border: 1px solid #FFAF9B;
+    border-radius: 45px;
+  }
 </style>
