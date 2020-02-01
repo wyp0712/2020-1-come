@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    
+    <HeaderBar />
     <SearchBar
       :focus="focus"
       :disabled="disabled"
       @onSearchClick="onSearchClick"
     />
-
+<!-- 
     <div class="img-wrapper">
       <ImageView 
         src="https://www.youbaobao.xyz/mpvue-res/big.jpg"
@@ -14,27 +14,59 @@
         @onClick="onImgClick"
         height="200px"
       />
-    </div>
+    </div> -->
+    <HomeCard 
+     :shelfList="shelfList"
+     @onClick="onHomeCardClick"
+    />
+    <Dialog 
+     @onClick="onDialogClick"
+     :isShow="isShowDialog"
+    />
   </div>
 </template>
 
 <script>
 import ImageView from '@/components/ImageView'
 import SearchBar from '@/components/SearchBar'
+import Dialog from '@/components/Dialog'
+import HomeCard from '@/components/HomeCard'
+import HeaderBar from '@/components/Header'
+import BookData from '../mock/data.json'
+
 export default {
   name: 'home',
   data() {
     return {
       round: false,
       focus: false,
-      disabled: true
+      disabled: true,
+      isShowDialog: false,
+      BookData: BookData,
+      shelfList: []
     }
+  },
+  mounted() {
+    const { shelf } = this.BookData.data
+    this.shelfList = shelf;
+    console.log(this.BookData.data.shelf, 'BookData') 
   },
   components: {
     ImageView,
-    SearchBar
+    SearchBar,
+    Dialog,
+    HomeCard,
+    HeaderBar
   },
   methods: {
+    onHomeCardClick() {
+      console.log('hhjdhdj')
+      this.$router.push('/bookRack')
+    },
+    onDialogClick() {
+      console.log('eeee')
+      this.isShowDialog = false
+    },
     onImgClick() {
       console.log('hello world')
     },
@@ -42,7 +74,8 @@ export default {
       console.log('点击跳转路由')
       this.$router.push('/about')
     }
-  },
+  }
+
 }
 </script>
 
