@@ -1,36 +1,58 @@
+
+// 一级路由
+import HomeIndex from '@/pages/HomeIndex.js'
+import MyOrder from '@/pages/MyOrder'
+import Mine from '@/pages/Mine'
+
 import BusinessList from '@/pages/BusinessList'
 import GoodsList from '@/pages/GoodsList'
 import OrderList from '@/pages/OrderList'
 import AddressList from '@/pages/AddressList'
-
-
-// import Home from '../views/Home/index'
-
-// import Carttab1 from '../views/Cart/pages/tab1'
-// import Carttab2 from '../views/Cart/pages/tab2'
-
+import SearchPage from '@/pages/SearchPage'
 
 const routes = [
   {
     path: '/',
-    redirect: '/business'
+    redirect: '/homeIndex'
   },
   {
-    path: '/business',
-    components: BusinessList
+    page: '/homeIndex',
+    components: HomeIndex,
+    children: [
+      {
+        path: '/homeIndex',
+        redirect: '/homeIndex/business'
+      },
+      {
+        path: '/homeIndex/business',
+        components: BusinessList
+      },
+      {
+        path: '/homeIndex/goods',
+        components: GoodsList
+      },
+      {
+        path: '/homeIndex/order',
+        components: OrderList
+      },
+      {
+        path: '/homeIndex/address',
+        components: AddressList
+      },
+      {
+        path: '/homeIndex/search',
+        components: SearchPage
+      }
+    ]
   },
   {
-    path: '/goods',
-    components: GoodsList
+    page: '/myOrder',
+    components: MyOrder
   },
   {
-    path: '/order',
-    components: OrderList
+    page: '/mine',
+    components: Mine
   },
-  {
-    path: '/address',
-    components: AddressList
-  }
 ]
 
 export default routes;
