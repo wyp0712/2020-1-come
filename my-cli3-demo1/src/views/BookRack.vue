@@ -51,7 +51,6 @@ export default {
    ul {
      margin: 8px;
      width: 89px;
-    //  height: 128px;
    }
  }
 </style>
