@@ -1,9 +1,7 @@
-import React, { Component,Fragment } from 'react'
-// import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import ImageView from '../BaseComponents/ImageView'
 import axios from 'axios'
 import '../../mock/index'
-
 import styled from 'styled-components'
 
 const ImageBox = styled.div`
@@ -24,9 +22,6 @@ const ImageBox = styled.div`
 
 
 export default class IconBox extends Component {
-  static propTypes = {
-    // prop: PropTypes
-  }
   state = {
     round: true,
     iconList: []
@@ -61,7 +56,6 @@ export default class IconBox extends Component {
 
   componentDidMount() {
     axios.get('/api/icon').then(res => {
-      console.log(res.data.list, 'res')
       this.setState({
         iconList: res.data.list
       })
