@@ -13,8 +13,9 @@ const ImageBox = styled.div`
     margin: 7px;
     li {
       &:nth-child(2) {
-        width: 100%;
+        width: 56px;
         overflow: hidden;
+        height: 25px;    
       }
     }
   }

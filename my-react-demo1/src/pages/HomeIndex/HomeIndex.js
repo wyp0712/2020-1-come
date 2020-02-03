@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 
-import RouterView from '../router/index'
-import FooterBar from '../components/BusinessList/Footer'
-import HeaderBar from '../components/BusinessList/Header'
+import RouterView from '../../router/index'
+import FooterBar from '../../components/BusinessList/Footer'
+import HeaderBar from '../../components/BusinessList/Header'
 
 import styled from 'styled-components'
 
