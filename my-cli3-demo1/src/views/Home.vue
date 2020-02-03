@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HeaderBar />
+
     <SearchBar
       :focus="focus"
       :disabled="disabled"
