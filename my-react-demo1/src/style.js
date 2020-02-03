@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     -khtml-user-select: none; /* -khtml-苹果浏览器的文本不能选中 */
     -webkit-user-select: none; /* -webkit-苹果浏览器的文本不能选中 */
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;  /* 移动端字体 */
+    list-style:none;
 }
 body{
     /* 属性控制元素在移动设备上是否使用滚动回弹效果. */
