@@ -59,6 +59,7 @@ export default class HeaderBar extends Component {
   }
 
   goToSearchEvent = () => {
-    this.props.history.push('/homeIndex/search')
+    console.log(this.props, '')
+    this.props.history.push('/search')
   }
 }

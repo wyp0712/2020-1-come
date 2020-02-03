@@ -16,7 +16,7 @@ const routes = [
     redirect: '/homeIndex'
   },
   {
-    page: '/homeIndex',
+    path: '/homeIndex',
     components: HomeIndex,
     children: [
       {
@@ -28,31 +28,31 @@ const routes = [
         components: BusinessList
       },
       {
-        path: '/homeIndex/goods',
-        components: GoodsList
+        path: '/homeIndex/myOrder',
+        components: MyOrder
       },
       {
-        path: '/homeIndex/order',
-        components: OrderList
-      },
-      {
-        path: '/homeIndex/address',
-        components: AddressList
-      },
-      {
-        path: '/homeIndex/search',
-        components: SearchPage
+        path: '/homeIndex/mine',
+        components: Mine
       }
     ]
   },
   {
-    page: '/myOrder',
-    components: MyOrder
+    path: '/homeIndex/address',
+    components: AddressList
   },
   {
-    page: '/mine',
-    components: Mine
+    path: '/homeIndex/goods',
+    components: GoodsList
   },
+  {
+    path: '/homeIndex/order',
+    components: OrderList
+  },
+  {
+    path: '/search',
+    components: SearchPage
+  }
 ]
 
 export default routes;
