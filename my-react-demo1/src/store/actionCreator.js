@@ -9,6 +9,12 @@ export const initGoodsData = (data) => {
   }
 }
 
+export const getGoodsLeftArr = () => {
+  return {
+    type: 'get_left_data'
+  }
+}
+
 export const getGoodsList = () => {
   return (dispatch) => {
      axios.get('/api/goods').then(res => {

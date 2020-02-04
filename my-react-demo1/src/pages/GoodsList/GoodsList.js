@@ -3,8 +3,10 @@ import GoodsHeader from '@/components/GoodsList/GoodsHeader'
 import GoodsNav from '@/components/GoodsList/GoodsNav'
 import GoodsContent from '@/components/GoodsList/GoodsContent'
 
-import { getGoodsList } from '../../store/actionCreator'
 
+import { 
+  getGoodsList,
+  getGoodsLeftArr } from '../../store/actionCreator'
 import { connect } from 'react-redux'
 
 class GoodsList extends Component {
@@ -13,7 +15,9 @@ class GoodsList extends Component {
       <div>
         <GoodsHeader {...this.props}/>
         <GoodsNav />
-        <GoodsContent />
+        <GoodsContent
+         goodsData={this.props.goods}
+        />
       </div>
     )
   }
@@ -21,12 +25,13 @@ class GoodsList extends Component {
   componentDidMount() {
     const { getAjax } = this.props;
     getAjax && getAjax()
-     
   }
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    goods: state.goods
+  }
 }
 
 const mapActionsToProps = (dispatch) => {
