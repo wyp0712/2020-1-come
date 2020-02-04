@@ -15,6 +15,13 @@ export const getGoodsLeftArr = () => {
   }
 }
 
+export const getLeftIndex = (index) => {
+  return {
+    type: 'init_left_tabindex',
+    index
+  }
+}
+
 export const getGoodsList = () => {
   return (dispatch) => {
      axios.get('/api/goods').then(res => {

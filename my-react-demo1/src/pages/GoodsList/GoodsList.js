@@ -6,20 +6,34 @@ import GoodsContent from '@/components/GoodsList/GoodsContent'
 
 import { 
   getGoodsList,
-  getGoodsLeftArr } from '../../store/actionCreator'
+  getLeftIndex } from '../../store/actionCreator'
 import { connect } from 'react-redux'
 
 class GoodsList extends Component {
+
+  state = {
+    tabIndex: 0
+  }
   render() {
     return (
       <div>
         <GoodsHeader {...this.props}/>
-        <GoodsNav />
+        <GoodsNav 
+         getIndexEvent = {(index) => this.getTabIndex(index)}
+        />
         <GoodsContent
-         goodsData={this.props.goods}
+          goods={this.props.goods}
+          tabIndex={this.state.tabIndex}
         />
       </div>
     )
+  }
+
+  getTabIndex = (index) => {
+    this.setState({
+      tabIndex: index
+    })
+    console.log(index, 'tab----index')
   }
 
   componentDidMount() {

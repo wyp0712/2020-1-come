@@ -3,7 +3,8 @@ const defaultState = { // 数据仓库
    seller: [],
    goods: [],
    ratings: [],
-   leftArr: []
+   rightArr: [],
+   leftTabIndex: 0
 }
 
 export default (state = defaultState, action) => {
@@ -15,11 +16,11 @@ export default (state = defaultState, action) => {
     newState.seller = action.data.seller
     newState.goods = action.data.goods
     newState.ratings = action.data.ratings
-    // console.log(newState.goods, 'goods')
   }
 
-  if (action.type === 'get_left_data') {
-    // console.log(newState.goods, 'goods') 
+  if (action.type === 'init_left_tabindex') {
+    console.log(action.index, 'action')
+    newState.leftTabIndex = action.index
   }
 
   return newState;
