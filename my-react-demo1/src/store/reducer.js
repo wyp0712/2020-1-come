@@ -4,7 +4,8 @@ const defaultState = { // 数据仓库
    goods: [],
    ratings: [],
    rightArr: [],
-   leftTabIndex: 0
+   leftTabIndex: 0,
+   cartData: []
 }
 
 export default (state = defaultState, action) => {
@@ -21,6 +22,19 @@ export default (state = defaultState, action) => {
   if (action.type === 'init_left_tabindex') {
     console.log(action.index, 'action')
     newState.leftTabIndex = action.index
+  }
+
+  // 购物车++功能
+  if (action.type === 'add_to_cart') {
+    // 1. 找到数据 放入购物车 同时同时添加一个count
+    console.log(newState.goods, 'goods')
+
+    // 2. 实现购物车++功能
+  }
+  
+  // 购物车--功能
+  if (action.type === 'remove_to_cart') {
+
   }
 
   return newState;

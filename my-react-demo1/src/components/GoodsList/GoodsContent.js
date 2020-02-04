@@ -5,36 +5,8 @@ import Swiper from 'swiper'
 import 'swiper/css/swiper.css'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { getLeftIndex } from '../../store/actionCreator'
+import { getLeftIndex, getGoodsAdd, getGoodsRemove } from '../../store/actionCreator'
 import BaseButton from '../BaseComponents/baseBtn'
-
-const ContentWrapper = styled.div`
-  display: flex;
-`;
-
-const LeftWrapper = styled.div`
-  width: 60px;
-  .left {
-    width: 100%;
-    height: 30px;
-    text-align:center;
-    line-height: 30px;
-    border-bottom:1px solid #ccc;
-    overflow:hidden;
-  }
-`;
-
-const RightWrapper = styled.div`
-    width: 160px;
-    .right {
-      width: 100%;
-      overflow:hidden;
-      
-      text-align:center;
-      padding-left: 10px;
-      border-bottom:1px solid #ccc;
-    }
-`;
 
 class GoodsContent extends Component {
   static propTypes = {
@@ -47,7 +19,8 @@ class GoodsContent extends Component {
   }
 
   render() {
-    const { goods } = this.props
+    // console.log(this.props, 'proip-----props')
+    const { goods, leftEvent, addEvent, removeEvent } = this.props
     return (
       <div className="swiper-container">
          <div className="swiper-wrapper">
@@ -58,7 +31,7 @@ class GoodsContent extends Component {
                   goods.length && goods.map((item, index) => { 
                     return (
                         <div className="left" key={index}
-                         onClick={() => { this.props.leftEvent(index) }}
+                         onClick={() => { leftEvent(index) }}
                         >
                           {item.name}
                         </div>
@@ -79,14 +52,14 @@ class GoodsContent extends Component {
                            <div className="btn-box">
                               <BaseButton 
                                text='-'
-                               onClick={() => {this.props.addEvent(index)}}
+                               addEvent={() => {addEvent(index)}}
                               ></BaseButton>
                               <BaseButton
                                text={item.count || '0' }
                               ></BaseButton>
                               <BaseButton 
                                text="+"
-                               onClick={() => {this.props.remmoveEvent(index)}}
+                               removeEvent={() => {removeEvent(index)}}
                               ></BaseButton>
                            </div>
                         </div>
@@ -107,6 +80,7 @@ class GoodsContent extends Component {
       </div>
     )
   }
+
 
   // 这个生命周期只执行一次
   componentDidMount() {
@@ -139,12 +113,53 @@ const mapActionsToProps = (dispatch) => {
       dispatch(action)
     },
     addEvent(index) {
-      
+      console.log(index, 'index')
+      const action = getGoodsAdd(index)
+      dispatch(action) 
     },
     removeEvent(index) {
-
+      const action = getGoodsRemove(index)
+      dispatch(action) 
     }
   }
 }
 
+
+
 export default connect(mapStateToProps, mapActionsToProps)(GoodsContent)
+
+
+
+const TestBox = styled.div`
+  width: 200px;
+  height:200px;
+  background: red;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+`;
+
+const LeftWrapper = styled.div`
+  width: 60px;
+  .left {
+    width: 100%;
+    height: 30px;
+    text-align:center;
+    line-height: 30px;
+    border-bottom:1px solid #ccc;
+    overflow:hidden;
+  }
+`;
+
+const RightWrapper = styled.div`
+    width: 160px;
+    .right {
+      width: 100%;
+      overflow:hidden;
+      
+      text-align:center;
+      padding-left: 10px;
+      border-bottom:1px solid #ccc;
+    }
+`;

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-
 export default class BaseButton extends Component {
   static propTypes = {
      text: PropTypes.string,
@@ -11,7 +10,9 @@ export default class BaseButton extends Component {
      bgColor: PropTypes.string,
      round: PropTypes.bool,
      font: PropTypes.string,
-     color: PropTypes.string
+     color: PropTypes.string,
+     addEvent: PropTypes.func,
+     removeEvent: PropTypes.func
   }
 
   static defaultProps = {
@@ -33,8 +34,19 @@ export default class BaseButton extends Component {
          round={this.props.round}
          font={this.props.font}
          color={this.props.color}
+         onClick={ () => { this.onAddEvent() } }
+         onClick={ () => this.onRemoveEvent() }
         >{this.props.text}</SpanBtn>
     )
+  }
+
+  onAddEvent = () => {
+    console.log('13432423')
+    const { addEvent } = this.props;
+    addEvent && addEvent()
+  }
+  onRemoveEvent = () => {
+    const { removeEvent } = this.props;
   }
 }
 

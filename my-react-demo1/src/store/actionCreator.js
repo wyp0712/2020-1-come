@@ -31,3 +31,19 @@ export const getGoodsList = () => {
      })
   }
 }
+
+// 购物车++
+export const getGoodsAdd = (index) => {
+  return {
+    type: 'add_to_cart',
+    index
+  }
+} 
+
+// 购物车--
+export const getGoodsRemove = (index) => {
+  return {
+    type: 'remove_to_cart',
+    index
+  }
+} 
