@@ -4,12 +4,12 @@ import ajax from './request';
  * @param { post: data }
  */
 
-//  
-export const selectInsurance = (data) => {
+// get接口测试
+export const getLogin = (params) => {
   return ajax({
-    url: '/api/ins/insurance',
+    url: '/api/login',
     method: 'get',
-    data
+    params
   })
 }
 
@@ -21,31 +21,3 @@ export const testPostList = (data) => {
     data
   })
 }
-
-export const pageSizeFn = (params) => {
-  return ajax({
-    url: '/api/page_test',
-    method: 'get',
-    params
-  })
-}
-
-// get接口测试
-export const getLogin = (params) => {
-  return ajax({
-    url: '/api/login',
-    method: 'get',
-    params
-  })
-}
-
-export const getUserList = (params) => {
-  return ajax({
-    url: '/api/task/list',
-    method: 'get',
-    params
-  })
-}
-
-
-

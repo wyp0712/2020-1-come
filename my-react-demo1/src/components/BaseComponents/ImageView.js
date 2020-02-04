@@ -45,6 +45,7 @@ export default class ImageView extends Component {
   onClick = () => {
 
     const { onClick } = this.props;
+    console.log(onClick, 'onClick')
     onClick()
   }
 }

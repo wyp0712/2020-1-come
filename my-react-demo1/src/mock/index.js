@@ -1,4 +1,5 @@
 import Mock from 'mockjs'
+import GoodsData from './goods.json'
 
 const iconList = Mock.mock({
   'list|10': [
@@ -13,3 +14,6 @@ const iconList = Mock.mock({
 // icon接口
 
 Mock.mock('/api/icon', iconList)
+
+// 商品列表接口
+Mock.mock('/api/goods', GoodsData)

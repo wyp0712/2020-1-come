@@ -40,15 +40,15 @@ const routes = [
     ]
   },
   {
-    path: '/homeIndex/address',
+    path: '/address',
     components: AddressList
   },
   {
-    path: '/homeIndex/goods',
+    path: '/goods',
     components: GoodsList
   },
   {
-    path: '/homeIndex/order',
+    path: '/order',
     components: OrderList
   },
   {
