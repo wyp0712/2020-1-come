@@ -39,7 +39,7 @@ export default class ImageView extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props, 'round')
+    // console.log(this.props, 'round')
   }
 
   onClick = () => {

@@ -13,7 +13,6 @@ export default class BusinessList extends Component {
     return (
       <div>
         <IconBox />
-        商家列表
       </div>
     )
   }
