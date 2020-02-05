@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import GoodsHeader from '@/components/GoodsList/GoodsHeader'
 import GoodsNav from '@/components/GoodsList/GoodsNav'
 import GoodsContent from '@/components/GoodsList/GoodsContent'
-
+import CartCom from '@/components/GoodsList/CartCom'
 
 import { 
   getGoodsList,
@@ -25,6 +25,7 @@ class GoodsList extends Component {
           goods={this.props.goods}
           tabIndex={this.state.tabIndex}
         />
+        <CartCom />
       </div>
     )
   }

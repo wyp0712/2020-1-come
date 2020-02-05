@@ -49,17 +49,17 @@ class GoodsContent extends Component {
                           <div>{item.price}</div>
                           <div>{item.description}</div>
                           <div>{item.info}</div>
-                           <div className="btn-box">
+                           <div className="btn-box" >
                               <BaseButton 
                                text='-'
-                               addEvent={() => {addEvent(index)}}
+                               clickEvent={() => {removeEvent(index)}}
                               ></BaseButton>
                               <BaseButton
-                               text={item.count || '0' }
+                               text={item.count || 0}
                               ></BaseButton>
                               <BaseButton 
                                text="+"
-                               removeEvent={() => {removeEvent(index)}}
+                               clickEvent={() => {addEvent(index)}}
                               ></BaseButton>
                            </div>
                         </div>
@@ -80,7 +80,6 @@ class GoodsContent extends Component {
       </div>
     )
   }
-
 
   // 这个生命周期只执行一次
   componentDidMount() {
@@ -113,13 +112,14 @@ const mapActionsToProps = (dispatch) => {
       dispatch(action)
     },
     addEvent(index) {
-      console.log(index, 'index')
+      // console.log(index, 'add')
       const action = getGoodsAdd(index)
-      dispatch(action) 
+      dispatch(action)
     },
     removeEvent(index) {
+      // console.log(index, 'remove')
       const action = getGoodsRemove(index)
-      dispatch(action) 
+      dispatch(action)
     }
   }
 }
