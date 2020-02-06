@@ -3,6 +3,16 @@
     <router-view/>
   </div>
 </template>
+<script>
+import axios from 'axios'
+export default {
+  mounted() {
+    axios.get('/api/get_test').then(res => {
+      console.log(res, 'res')
+    })
+  }
+}
+</script>
 
 <style lang="scss">
 @import url('./assets/iconfont/iconfont.css');

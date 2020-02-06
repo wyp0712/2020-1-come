@@ -18,31 +18,30 @@ export default (state = defaultState, action) => {
     newState.seller = action.data.seller
     newState.goods = action.data.goods
     newState.ratings = action.data.ratings
+    // console.log(newState.goods, 'goods')
+    newState.goods.forEach((val) => {
+      val.foods.forEach(item => {
+        item.count = 0;
+      })
+    })
   }
   
   // 初始化tab切换下标
   if (action.type === 'init_left_tabindex') {
-    newState.leftTabIndex = action.index
-    // 热销菜系 
+    newState.leftTabIndex = action.index;
     /**
-     * 1. 找出热销的数据 
-     * 2. 找出每个tab切换数据- 每次tab切换的时候要遍历热销数据将热销count赋值给下面的数据
+     * 1. 每次点击添加都会将东西添加到购物车中，
+     * 2. 每次tab切换的时候，将购物车中的数据和每次tab切换下的具体数据比较并且赋值；
      */
-    const hotGoods = newState.goods[0].foods;
-    const foods = newState.goods[action.index].foods;
-
-    hotGoods.forEach(val => {
-      foods.forEach(item => {
-        if (val.name === item.name) {
-          item.count = val.count; // 将热销的count赋值给下面的数据
-        }
+    const foods = newState.goods[action.index].foods; // tab切换下的数据
+    // newState.cartData 购物车中的数据
+    newState.cartData.forEach(cartItem => {
+      foods.forEach(foodItem => {
+         if (foodItem.name === cartItem.name) {
+          foodItem.count = cartItem.count;
+         } 
       })
     })
-    // 如果用户先点击了，非特热销的菜系，那就让用户将下面的数组遍历赋值给上面判断下标是否为0；
-      
-    console.log(newState.cartData, 'carData')
-
-
   }
 
   // tab切换页面中的加入购物车 ++
