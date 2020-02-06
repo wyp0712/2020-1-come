@@ -5,8 +5,7 @@ import GoodsContent from '@/components/GoodsList/GoodsContent'
 import CartCom from '@/components/GoodsList/CartCom'
 
 import { 
-  getGoodsList,
-  getLeftIndex } from '../../store/actionCreator'
+  getGoodsList } from '../../store/actionCreator'
 import { connect } from 'react-redux'
 
 class GoodsList extends Component {
@@ -25,7 +24,7 @@ class GoodsList extends Component {
           goods={this.props.goods}
           tabIndex={this.state.tabIndex}
         />
-        <CartCom />
+        <CartCom {...this.props}/>
       </div>
     )
   }
@@ -34,7 +33,6 @@ class GoodsList extends Component {
     this.setState({
       tabIndex: index
     })
-    console.log(index, 'tab----index')
   }
 
   componentDidMount() {

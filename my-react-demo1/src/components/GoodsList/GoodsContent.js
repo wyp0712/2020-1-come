@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,Fragment } from 'react'
 import PropTypes from 'prop-types'
 // 引入swiper组件
 import Swiper from 'swiper'
@@ -12,7 +12,7 @@ class GoodsContent extends Component {
   static propTypes = {
     tabIndex: PropTypes.number
   }
-  
+
   state = {
     mySwiper: null,
     leftTabIndex: 0
@@ -20,7 +20,7 @@ class GoodsContent extends Component {
 
   render() {
     // console.log(this.props, 'proip-----props')
-    const { goods, leftEvent, addEvent, removeEvent } = this.props
+    const { goods, leftEvent, addEvent, removeEvent,leftTabIndex } = this.props
     return (
       <div className="swiper-container">
          <div className="swiper-wrapper">
@@ -30,7 +30,8 @@ class GoodsContent extends Component {
                 {
                   goods.length && goods.map((item, index) => { 
                     return (
-                        <div className="left" key={index}
+                        <div  key={index}
+                         className={leftTabIndex === index ? 'left active': 'left' }
                          onClick={() => { leftEvent(index) }}
                         >
                           {item.name}
@@ -50,13 +51,18 @@ class GoodsContent extends Component {
                           <div>{item.description}</div>
                           <div>{item.info}</div>
                            <div className="btn-box" >
-                              <BaseButton 
-                               text='-'
-                               clickEvent={() => {removeEvent(index)}}
-                              ></BaseButton>
-                              <BaseButton
-                               text={item.count || 0}
-                              ></BaseButton>
+                             { item.count ? <Fragment>
+                                <BaseButton
+                                text='-'
+                                clickEvent={() => {removeEvent(index)}}
+                                ></BaseButton>
+                                <BaseButton
+                                text={item.count}
+                                ></BaseButton>
+                             </Fragment>
+                             : null
+                            }
+                            
                               <BaseButton 
                                text="+"
                                clickEvent={() => {addEvent(index)}}
@@ -129,13 +135,6 @@ const mapActionsToProps = (dispatch) => {
 export default connect(mapStateToProps, mapActionsToProps)(GoodsContent)
 
 
-
-const TestBox = styled.div`
-  width: 200px;
-  height:200px;
-  background: red;
-`;
-
 const ContentWrapper = styled.div`
   display: flex;
 `;
@@ -144,11 +143,15 @@ const LeftWrapper = styled.div`
   width: 60px;
   .left {
     width: 100%;
-    height: 30px;
     text-align:center;
     line-height: 30px;
     border-bottom:1px solid #ccc;
     overflow:hidden;
+    border-bottom:1px solid #ccc;
+    margin:5px 0px;
+  }
+  .active {
+    color: orange;
   }
 `;
 

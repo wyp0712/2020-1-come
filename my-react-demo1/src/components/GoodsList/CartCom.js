@@ -17,10 +17,9 @@ class CartComponent extends Component {
         { isMask &&  <div className="mask"
          onClick={ () => this.showCart() }
         ></div>}
-       
         <div className="tip" ref={(tipDom) => this.tipDom = tipDom }>
           头部
-           { cartData.length && cartData.map((item, index) => {
+           { cartData.length ? cartData.map((item, index) => {
                   return <div key={index}> 
                         <span>{item.name}</span>  
                         <span>{item.price}</span>  
@@ -28,18 +27,18 @@ class CartComponent extends Component {
                         <div className="btn-box">
                           <BaseButton
                            text='-'
-                           clickEvent={ () => removeEvent(index) }
+                           clickEvent={ () => removeEvent(item, index) }
                           ></BaseButton>
                             <BaseButton
                            text={item.count}
                           ></BaseButton>
                            <BaseButton
                            text='+'
-                           clickEvent={ () => addEvent(index) }
+                           clickEvent={ () => addEvent(item, index) }
                           ></BaseButton>
                         </div>
                       </div>
-           }) }
+           }) : null  }
         </div>
         <CartBox className="cart-box">
           <div className="cart-icon" 
@@ -70,7 +69,6 @@ class CartComponent extends Component {
     // 2. 展示购物车
     if (isMask) {
       this.wrapper.style.height = '100vh'
-
       this.tipDom.style.transform =  `translateY(0)`;
     } else {
       this.wrapper.style.height = '10vh'
@@ -87,17 +85,18 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeEvent(index) {
+    removeEvent(item, index) {
       const action = {
         type: 'cart_remove',
-        index
+        item,index
       }
       dispatch(action)
     },
-    addEvent(index) {
+    // ++
+    addEvent(item, index) {
       const action = {
         type: 'cart_add',
-        index
+        item,index
       }
       dispatch(action)
     } 

@@ -31,7 +31,7 @@ export default class NavBar extends Component {
   }
 
   render() {
-    const { tabIndex,list } = this.state;
+    const { tabIndex } = this.state;
     const { tabList } = this.props
     return (
       <NavBarBox>
