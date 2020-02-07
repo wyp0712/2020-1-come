@@ -7,6 +7,25 @@ import CartCom from '@/components/GoodsList/CartCom'
 import { 
   getGoodsList } from '../../store/actionCreator'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+
+const GoodsWrapper = styled.div`
+  height: calc(100vh - 50px);
+  display:flex;
+  flex-direction:column;
+
+  .header {
+
+  }
+
+  .main {
+    flex:1;
+    width: 100%;
+    overflow: auto;
+  }
+
+
+`;
 
 class GoodsList extends Component {
 
@@ -15,17 +34,20 @@ class GoodsList extends Component {
   }
   render() {
     return (
-      <div>
+      <GoodsWrapper className="goods-wrapper">
         <GoodsHeader {...this.props}/>
         <GoodsNav 
          getIndexEvent = {(index) => this.getTabIndex(index)}
         />
-        <GoodsContent
-          goods={this.props.goods}
-          tabIndex={this.state.tabIndex}
-        />
+        <div className="main">
+          <GoodsContent
+            goods={this.props.goods}
+            tabIndex={this.state.tabIndex}
+          />
+        </div>
+
         <CartCom {...this.props}/>
-      </div>
+      </GoodsWrapper>
     )
   }
 

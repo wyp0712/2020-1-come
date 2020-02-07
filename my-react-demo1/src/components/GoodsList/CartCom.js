@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import BaseButton from '@/components/BaseComponents/baseBtn'
@@ -13,43 +13,45 @@ class CartComponent extends Component {
     const { isMask } = this.state;
     const { cartData,removeEvent,addEvent } = this.props;
     return (
-      <CartWrapper ref={ (wrapper) => this.wrapper = wrapper }>
-        { isMask &&  <div className="mask"
+      <Fragment>
+        { isMask &&  <MaskDiv className="mask"
          onClick={ () => this.showCart() }
-        ></div>}
-        <div className="tip" ref={(tipDom) => this.tipDom = tipDom }>
-          头部
-           { cartData.length ? cartData.map((item, index) => {
-                  return <div key={index}> 
-                        <span>{item.name}</span>  
-                        <span>{item.price}</span>  
-                        <span>{item.count}</span>
-                        <div className="btn-box">
-                          <BaseButton
-                           text='-'
-                           clickEvent={ () => removeEvent(item, index) }
-                          ></BaseButton>
+        ></MaskDiv>}
+         <CartWrapper ref={ (wrapper) => this.wrapper = wrapper }>
+          <div className="tip" ref={(tipDom) => this.tipDom = tipDom }>
+            头部
+            { cartData.length ? cartData.map((item, index) => {
+                    return <div key={index}> 
+                          <span>{item.name}</span>  
+                          <span>{item.price}</span>  
+                          <span>{item.count}</span>
+                          <div className="btn-box">
                             <BaseButton
-                           text={item.count}
-                          ></BaseButton>
-                           <BaseButton
-                           text='+'
-                           clickEvent={ () => addEvent(item, index) }
-                          ></BaseButton>
+                            text='-'
+                            clickEvent={ () => removeEvent(item, index) }
+                            ></BaseButton>
+                              <BaseButton
+                            text={item.count}
+                            ></BaseButton>
+                            <BaseButton
+                            text='+'
+                            clickEvent={ () => addEvent(item, index) }
+                            ></BaseButton>
+                          </div>
                         </div>
-                      </div>
-           }) : null  }
-        </div>
-        <CartBox className="cart-box">
-          <div className="cart-icon" 
-           onClick={ () => this.showCart() }
-          >
-            <span>{cartData.length}</span>
+            }) : null  }
           </div>
-          <div className="cart-total">{this.getTotalPrice()}</div>
-          <div className="cart-cal">去结算</div>
-        </CartBox>
-      </CartWrapper>
+          <CartBox className="cart-box">
+             <div className="cart-icon" 
+              onClick={ () => this.showCart() }
+              >
+               <span>{cartData.length}</span>
+            </div>
+            <div className="cart-total">{this.getTotalPrice()}</div>
+            <div className="cart-cal">去结算</div>
+          </CartBox>
+        </CartWrapper>
+      </Fragment>
     )
   }
 
@@ -66,9 +68,9 @@ class CartComponent extends Component {
     this.setState({
       isMask: isMask
     })
-    // 2. 展示购物车
+    // 2. 展示购物车 计算每一个物品的高度 * 几个物品 赋值给高度；
     if (isMask) {
-      this.wrapper.style.height = '100vh'
+      this.wrapper.style.height = '295px'
       this.tipDom.style.transform =  `translateY(0)`;
     } else {
       this.wrapper.style.height = '10vh'
@@ -146,17 +148,8 @@ const CartWrapper = styled.div`
   bottom:0;
   left:0;
   z-index:1;
-  .mask {
-    width: 100%;
-    height:100%;
-    position: absolute;
-    background: #000;
-    opacity: .6;
-    
-  }
   .tip {
     width: 100%;
-    height:50%;
     background: #fff;
     left: 0;
     bottom: 50px;
@@ -166,4 +159,15 @@ const CartWrapper = styled.div`
     transition: all 500ms;
     overflow:auto;
   }
+`;
+
+const MaskDiv = styled.div`
+  width: 100%;
+  height:100%;
+  position: fixed;
+  left:0;
+  top:0;
+  background: #000;
+  opacity: .6;
+  z-index:1;
 `;

@@ -82,6 +82,7 @@ class GoodsContent extends Component {
              3
            </div>
          </div>
+         
          { this.state.mySwiper && this.setSwiperTranslate() }
       </div>
     )
