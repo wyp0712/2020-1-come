@@ -7,7 +7,7 @@
 import axios from 'axios'
 export default {
   mounted() {
-    axios.get('api/release/pneumonia').then(res => {
+    axios.get('/api/get_test').then(res => {
       console.log(res, 'res')
     })
   }

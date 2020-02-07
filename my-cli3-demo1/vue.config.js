@@ -3,7 +3,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: 'http://127.0.0.1:3002/api',
+        target: 'https://service-f9fjwngp-1252021671.bj.apigw.tencentcs.com/',
         changeOrigin: true, // 是否改变域名
         ws: true,
         pathRewrite: {
